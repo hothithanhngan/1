@@ -4,6 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>La Petite Vienne - Patisserie & Cafe</title>
+  
+  <!-- Tailwind CSS CDN -->
   <script src="[suspicious link removed]"></script>
   <script>
     tailwind.config = {
@@ -22,7 +24,10 @@
       }
     }
   </script>
+
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..800;1,400..800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
   <style>
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #12100E; color: #E5DCD3; }
     .font-serif { font-family: 'Playfair Display', serif; }
@@ -50,7 +55,7 @@
     </nav>
   </header>
 
-  <!-- HERO -->
+  <!-- HERO BANNER -->
   <section class="py-8 px-4 text-center bg-gradient-to-b from-[#1A1614] to-[#12100E] border-b border-[#2A221E]">
     <p class="text-[#D4AF37] text-[11px] tracking-widest uppercase mb-1">Hương vị Châu Âu nguyên bản trong từng lớp bánh</p>
     <h2 class="text-2xl md:text-3xl font-serif text-[#E5DCD3]">Danh Mục 50 Món Bánh Nghệ Thuật Pháp</h2>
@@ -64,7 +69,7 @@
   <!-- PRODUCT DETAIL MODAL -->
   <div id="product-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="bg-[#1A1614] border border-[#3A2E28] rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto p-6 relative text-[#E5DCD3]">
-      <button onclick="closeModal()" class="absolute top-4 right-4 text-[#A69385] hover:text-white">
+      <button onclick="closeModal()" class="absolute top-4 right-4 text-[#A69385] hover:text-white bg-[#12100E] p-1.5 rounded-full z-10 border border-[#3A2E28]">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
       <div id="modal-content"></div>
@@ -169,7 +174,6 @@
   </footer>
 
   <script>
-    // DATA & STATE
     let currentTab = 'CS';
     let cart = [];
     let modalProduct = null;
@@ -187,63 +191,63 @@
     };
 
     const PRODUCTS = [
-      // CS
-      { id: 'CS-01', category: 'CS', name: 'Butter Croissant', price: 45000, size: '1 cái (Tiêu chuẩn)', stockStatus: 'Có sẵn hôm nay', description: 'Lớp vỏ nướng vàng óng, giòn rụm vỡ tan ngay khi cắn, kết cấu tổ ong cùng bơ Pháp AOP.', ingredients: 'Bột mì, bơ Pháp AOP, sữa tươi.', allergy: 'Gluten, Sữa' },
-      { id: 'CS-02', category: 'CS', name: 'Pain au Chocolat', price: 52000, size: '1 cái (Tiêu chuẩn)', stockStatus: 'Có sẵn hôm nay', description: 'Sự kết hợp giữa vỏ sừng bò ngàn lớp và hai thanh socola nguyên chất 65% từ Bỉ.', ingredients: 'Bột mì, bơ, socola đen Bỉ.', allergy: 'Gluten, Sữa' },
-      { id: 'CS-03', category: 'CS', name: 'Almond Croissant', price: 55000, size: '1 cái (Tiêu chuẩn)', stockStatus: 'Có sẵn hôm nay', description: 'Chiếc croissant được phủ kem hạnh nhân mềm ẩm và hạnh nhân lát nướng xém.', ingredients: 'Bột mì, bơ, kem hạnh nhân.', allergy: 'Gluten, Hạt, Sữa' },
-      { id: 'CS-04', category: 'CS', name: 'Kouign-Amann', price: 58000, size: '1 cái', stockStatus: 'Có sẵn hôm nay', description: 'Nữ hoàng vùng Brittany. Lớp vỏ ngàn lớp nướng cùng bơ và đường caramel bóng bẩy.', ingredients: 'Bột mì, bơ, đường caramel.', allergy: 'Gluten, Sữa' },
-      { id: 'CS-05', category: 'CS', name: 'Baguette Tradition', price: 35000, size: 'Ổ 250g', stockStatus: 'Có sẵn hôm nay', description: 'Chiếc Baguette chuẩn Pháp vỏ giòn cứng cáp, ruột dai mềm dậy mùi men ủ tự nhiên.', ingredients: 'Bột mì, men tự nhiên, muối.', allergy: 'Gluten' },
-      { id: 'CS-06', category: 'CS', name: 'Brioche Tressée', price: 65000, size: 'Ổ 300g', stockStatus: 'Có sẵn hôm nay', description: 'Bánh mì hoa cúc tết bím kiêu sa, thớ bánh xé ra dai mềm thơm lừng hương bơ Pháp.', ingredients: 'Bột mì, bơ, trứng, vanilla.', allergy: 'Trứng, Sữa, Gluten' },
-      { id: 'CS-07', category: 'CS', name: 'Ciabatta', price: 45000, size: 'Ổ 200g', stockStatus: 'Có sẵn hôm nay', description: 'Bánh mì mộc mạc mang linh hồn nước Ý, vỏ dai nhẹ, ruột xốp thơm dầu oliu.', ingredients: 'Bột mì, men, dầu oliu nguyên chất.', allergy: 'Gluten' },
-      { id: 'CS-08', category: 'CS', name: 'Focaccia Rosemary', price: 55000, size: 'Khay 200g', stockStatus: 'Có sẵn hôm nay', description: 'Bức tranh đồng quê Ý với bề mặt bánh đính kèm lá hương thảo tươi và muối biển.', ingredients: 'Bột mì, dầu oliu, muối biển, hương thảo.', allergy: 'Gluten' },
-      { id: 'CS-09', category: 'CS', name: 'Garlic & Herb Bread', price: 60000, size: 'Ổ 250g', stockStatus: 'Có sẵn hôm nay', description: 'Lớp bánh xé xốp mềm quét đẫm bơ tỏi nướng chảy hòa quyện cùng ngò tây.', ingredients: 'Bột mì, bơ tỏi, ngò tây.', allergy: 'Gluten, Sữa' },
-      { id: 'CS-10', category: 'CS', name: 'Cinnamon Roll', price: 45000, size: '1 cái', stockStatus: 'Có sẵn hôm nay', description: 'Cuộn bánh mềm ẩm với đường vân quế nồng ấm, phủ đẫm kem phô mai tan chảy.', ingredients: 'Bột, bơ, quế, cream cheese.', allergy: 'Sữa, Trứng, Gluten' },
-      { id: 'CS-11', category: 'CS', name: 'Pretzel', price: 40000, size: '1 cái', stockStatus: 'Có sẵn hôm nay', description: 'Tạo hình xoắn nút truyền thống Đức, vỏ láng bóng điểm xuyết hạt muối biển thô.', ingredients: 'Bột lúa mạch, muối hạt.', allergy: 'Gluten' },
-      { id: 'CS-12', category: 'CS', name: 'Raspberry Croissant', price: 65000, size: '1 cái', stockStatus: 'Có sẵn hôm nay', description: 'Sừng bò hai màu rực rỡ với mứt mâm xôi tự nấu chua thanh bùng nổ hương vị.', ingredients: 'Bột mì, bơ, mứt mâm xôi.', allergy: 'Gluten, Sữa' },
-      { id: 'CS-13', category: 'CS', name: 'Classic Tiramisu', price: 75000, size: 'Ø 8cm - 1 người', stockStatus: 'Chỉ còn 3 bánh', description: 'Lớp bánh quy sâm-panh đẫm vị cafe espresso đắng nhẹ, quyện kem mascarpone.', ingredients: 'Mascarpone, cà phê, rượu Kahlua, cacao.', allergy: 'Cồn, Sữa, Trứng' },
-      { id: 'CS-14', category: 'CS', name: 'Lemon Meringue Tart', price: 70000, size: 'Ø 9cm - 1 người', stockStatus: 'Có sẵn hôm nay', description: 'Đế tart bơ giòn rụm ôm trọn kem chanh vàng, phía trên là tầng meringue khò lửa.', ingredients: 'Đế tart, kem chanh, lòng trắng trứng.', allergy: 'Trứng, Gluten, Sữa' },
-      { id: 'CS-15', category: 'CS', name: 'Panna Cotta', price: 65000, size: 'Hũ 150ml', stockStatus: 'Có sẵn hôm nay', description: 'Kem sữa tươi nấu cùng vanilla béo ngậy, dùng kèm sốt quả mọng đỏ ruby.', ingredients: 'Kem tươi, sữa, quả mọng.', allergy: 'Sữa' },
-      { id: 'CS-16', category: 'CS', name: 'Éclair au Chocolat', price: 60000, size: '1 chiếc', stockStatus: 'Có sẵn hôm nay', description: 'Bánh su kem thuôn dài thanh lịch của Pháp với nhân kem socola đắng êm ái.', ingredients: 'Bột choux, socola, kem tươi.', allergy: 'Sữa, Trứng, Gluten' },
-      { id: 'CS-17', category: 'CS', name: 'Basque Cheesecake', price: 85000, size: 'Slice (1/8 bánh)', stockStatus: 'Có sẵn hôm nay', description: 'Phô mai cháy Tây Ban Nha. Mặt ngoài nướng xém caramel, bên trong siêu ẩm mịn.', ingredients: 'Cream cheese, trứng, kem tươi.', allergy: 'Sữa, Trứng' },
-      { id: 'CS-18', category: 'CS', name: 'Canelé de Bordeaux', price: 45000, size: '1 cái', stockStatus: 'Có sẵn hôm nay', description: 'Vỏ ngoài phủ sáp ong dai giòn caramel, ruột ẩm như custard thơm vanilla & Rum.', ingredients: 'Sữa, trứng, rượu Rum, sáp ong.', allergy: 'Cồn, Sữa, Trứng, Gluten' },
-      { id: 'CS-19', category: 'CS', name: 'Lemon Madeleine', price: 45000, size: 'Set 2 cái', stockStatus: 'Có sẵn hôm nay', description: 'Những chiếc bánh sò nhỏ xinh xốp nhẹ như bông, ngậy mùi bơ nâu và vỏ chanh.', ingredients: 'Bột mì, bơ nâu, vỏ chanh.', allergy: 'Trứng, Gluten, Sữa' },
-      { id: 'CS-20', category: 'CS', name: 'Crème Brûlée', price: 65000, size: 'Hũ gốm 120g', stockStatus: 'Có sẵn hôm nay', description: 'Kem trứng custard béo ngậy đặc sánh vanilla, đối lập với lớp đường nâu khò lửa.', ingredients: 'Lòng đỏ trứng, kem tươi, vanilla, đường.', allergy: 'Trứng, Sữa' },
+      // CS - BÁNH CÓ SẴN (20 MÓN)
+      { id: 'CS-01', category: 'CS', name: 'Butter Croissant', price: 45000, size: '1 cái (Tiêu chuẩn)', stockStatus: 'Có sẵn hôm nay', description: 'Lớp vỏ nướng vàng óng, giòn rụm vỡ tan ngay khi cắn, kết cấu tổ ong cùng bơ Pháp AOP.', ingredients: 'Bột mì, bơ Pháp AOP, sữa tươi.', allergy: 'Gluten, Sữa', image: '[suspicious link removed]' },
+      { id: 'CS-02', category: 'CS', name: 'Pain au Chocolat', price: 52000, size: '1 cái (Tiêu chuẩn)', stockStatus: 'Có sẵn hôm nay', description: 'Sự kết hợp giữa vỏ sừng bò ngàn lớp và hai thanh socola nguyên chất 65% từ Bỉ.', ingredients: 'Bột mì, bơ, socola đen Bỉ.', allergy: 'Gluten, Sữa', image: '[suspicious link removed]' },
+      { id: 'CS-03', category: 'CS', name: 'Almond Croissant', price: 55000, size: '1 cái (Tiêu chuẩn)', stockStatus: 'Có sẵn hôm nay', description: 'Chiếc croissant được phủ kem hạnh nhân mềm ẩm và hạnh nhân lát nướng xém.', ingredients: 'Bột mì, bơ, kem hạnh nhân.', allergy: 'Gluten, Hạt, Sữa', image: '[suspicious link removed]' },
+      { id: 'CS-04', category: 'CS', name: 'Kouign-Amann', price: 58000, size: '1 cái', stockStatus: 'Có sẵn hôm nay', description: 'Nữ hoàng vùng Brittany. Lớp vỏ ngàn lớp nướng cùng bơ và đường caramel bóng bẩy.', ingredients: 'Bột mì, bơ, đường caramel.', allergy: 'Gluten, Sữa', image: '[suspicious link removed]' },
+      { id: 'CS-05', category: 'CS', name: 'Baguette Tradition', price: 35000, size: 'Ổ 250g', stockStatus: 'Có sẵn hôm nay', description: 'Chiếc Baguette chuẩn Pháp vỏ giòn cứng cáp, ruột dai mềm dậy mùi men ủ tự nhiên.', ingredients: 'Bột mì, men tự nhiên, muối.', allergy: 'Gluten', image: '[suspicious link removed]' },
+      { id: 'CS-06', category: 'CS', name: 'Brioche Tressée', price: 65000, size: 'Ổ 300g', stockStatus: 'Có sẵn hôm nay', description: 'Bánh mì hoa cúc tết bím kiêu sa, thớ bánh xé ra dai mềm thơm lừng hương bơ Pháp.', ingredients: 'Bột mì, bơ, trứng, vanilla.', allergy: 'Trứng, Sữa, Gluten', image: '[suspicious link removed]' },
+      { id: 'CS-07', category: 'CS', name: 'Ciabatta', price: 45000, size: 'Ổ 200g', stockStatus: 'Có sẵn hôm nay', description: 'Bánh mì mộc mạc mang linh hồn nước Ý, vỏ dai nhẹ, ruột xốp thơm dầu oliu.', ingredients: 'Bột mì, men, dầu oliu nguyên chất.', allergy: 'Gluten', image: '[suspicious link removed]' },
+      { id: 'CS-08', category: 'CS', name: 'Focaccia Rosemary', price: 55000, size: 'Khay 200g', stockStatus: 'Có sẵn hôm nay', description: 'Bức tranh đồng quê Ý với bề mặt bánh đính kèm lá hương thảo tươi và muối biển.', ingredients: 'Bột mì, dầu oliu, muối biển, hương thảo.', allergy: 'Gluten', image: '[suspicious link removed]' },
+      { id: 'CS-09', category: 'CS', name: 'Garlic & Herb Bread', price: 60000, size: 'Ổ 250g', stockStatus: 'Có sẵn hôm nay', description: 'Lớp bánh xé xốp mềm quét đẫm bơ tỏi nướng chảy hòa quyện cùng ngò tây.', ingredients: 'Bột mì, bơ tỏi, ngò tây.', allergy: 'Gluten, Sữa', image: '[suspicious link removed]' },
+      { id: 'CS-10', category: 'CS', name: 'Cinnamon Roll', price: 45000, size: '1 cái', stockStatus: 'Có sẵn hôm nay', description: 'Cuộn bánh mềm ẩm với đường vân quế nồng ấm, phủ đẫm kem phô mai tan chảy.', ingredients: 'Bột, bơ, quế, cream cheese.', allergy: 'Sữa, Trứng, Gluten', image: '[suspicious link removed]' },
+      { id: 'CS-11', category: 'CS', name: 'Pretzel', price: 40000, size: '1 cái', stockStatus: 'Có sẵn hôm nay', description: 'Tạo hình xoắn nút truyền thống Đức, vỏ láng bóng điểm xuyết hạt muối biển thô.', ingredients: 'Bột lúa mạch, muối hạt.', allergy: 'Gluten', image: '[suspicious link removed]' },
+      { id: 'CS-12', category: 'CS', name: 'Raspberry Croissant', price: 65000, size: '1 cái', stockStatus: 'Có sẵn hôm nay', description: 'Sừng bò hai màu rực rỡ với mứt mâm xôi tự nấu chua thanh bùng nổ hương vị.', ingredients: 'Bột mì, bơ, mứt mâm xôi.', allergy: 'Gluten, Sữa', image: '[suspicious link removed]' },
+      { id: 'CS-13', category: 'CS', name: 'Classic Tiramisu', price: 75000, size: 'Ø 8cm - 1 người', stockStatus: 'Chỉ còn 3 bánh', description: 'Lớp bánh quy sâm-panh đẫm vị cafe espresso đắng nhẹ, quyện kem mascarpone.', ingredients: 'Mascarpone, cà phê, rượu Kahlua, cacao.', allergy: 'Cồn, Sữa, Trứng', image: '[suspicious link removed]' },
+      { id: 'CS-14', category: 'CS', name: 'Lemon Meringue Tart', price: 70000, size: 'Ø 9cm - 1 người', stockStatus: 'Có sẵn hôm nay', description: 'Đế tart bơ giòn rụm ôm trọn kem chanh vàng, phía trên là tầng meringue khò lửa.', ingredients: 'Đế tart, kem chanh, lòng trắng trứng.', allergy: 'Trứng, Gluten, Sữa', image: '[suspicious link removed]' },
+      { id: 'CS-15', category: 'CS', name: 'Panna Cotta', price: 65000, size: 'Hũ 150ml', stockStatus: 'Có sẵn hôm nay', description: 'Kem sữa tươi nấu cùng vanilla béo ngậy, dùng kèm sốt quả mọng đỏ ruby.', ingredients: 'Kem tươi, sữa, quả mọng.', allergy: 'Sữa', image: '[suspicious link removed]' },
+      { id: 'CS-16', category: 'CS', name: 'Éclair au Chocolat', price: 60000, size: '1 chiếc', stockStatus: 'Có sẵn hôm nay', description: 'Bánh su kem thuôn dài thanh lịch của Pháp với nhân kem socola đắng êm ái.', ingredients: 'Bột choux, socola, kem tươi.', allergy: 'Sữa, Trứng, Gluten', image: '[suspicious link removed]' },
+      { id: 'CS-17', category: 'CS', name: 'Basque Cheesecake', price: 85000, size: 'Slice (1/8 bánh)', stockStatus: 'Có sẵn hôm nay', description: 'Phô mai cháy Tây Ban Nha. Mặt ngoài nướng xém caramel, bên trong siêu ẩm mịn.', ingredients: 'Cream cheese, trứng, kem tươi.', allergy: 'Sữa, Trứng', image: '[suspicious link removed]' },
+      { id: 'CS-18', category: 'CS', name: 'Canelé de Bordeaux', price: 45000, size: '1 cái', stockStatus: 'Có sẵn hôm nay', description: 'Vỏ ngoài phủ sáp ong dai giòn caramel, ruột ẩm như custard thơm vanilla & Rum.', ingredients: 'Sữa, trứng, rượu Rum, sáp ong.', allergy: 'Cồn, Sữa, Trứng, Gluten', image: '[suspicious link removed]' },
+      { id: 'CS-19', category: 'CS', name: 'Lemon Madeleine', price: 45000, size: 'Set 2 cái', stockStatus: 'Có sẵn hôm nay', description: 'Những chiếc bánh sò nhỏ xinh xốp nhẹ như bông, ngậy mùi bơ nâu và vỏ chanh.', ingredients: 'Bột mì, bơ nâu, vỏ chanh.', allergy: 'Trứng, Gluten, Sữa', image: '[suspicious link removed]' },
+      { id: 'CS-20', category: 'CS', name: 'Crème Brûlée', price: 65000, size: 'Hũ gốm 120g', stockStatus: 'Có sẵn hôm nay', description: 'Kem trứng custard béo ngậy đặc sánh vanilla, đối lập với lớp đường nâu khò lửa.', ingredients: 'Lòng đỏ trứng, kem tươi, vanilla, đường.', allergy: 'Trứng, Sữa', image: '[suspicious link removed]' },
 
-      // DT
-      { id: 'DT-01', category: 'DT', name: 'Sourdough Loaf', price: 85000, size: 'Ổ 500g', stockStatus: 'Đặt trước 24h', description: 'Lên men chậm 48 tiếng. Vỏ dày giòn rụm, ruột ẩm dai vị chua nhẹ quyến rũ.', ingredients: 'Bột mì nguyên cám, men chua levain.', allergy: 'Gluten' },
-      { id: 'DT-02', category: 'DT', name: 'Panettone Mini', price: 90000, size: '1 bánh mini', stockStatus: 'Đặt trước 24h', description: 'Bánh mùa lễ hội Ý, thớ bánh mềm mịn hòa quyện nho khô và mứt vỏ cam ướp rum.', ingredients: 'Bột mì, trứng, mứt trái cây.', allergy: 'Gluten, Trứng, Sữa' },
-      { id: 'DT-03', category: 'DT', name: 'Chocolate Babka', price: 85000, size: 'Ổ 400g', stockStatus: 'Đặt trước 24h', description: 'Ổ bánh tết bím Đông Âu, cốt bánh mềm béo cuốn dải socola đen đắng đậm đà.', ingredients: 'Bột, bơ, socola đen, trứng.', allergy: 'Gluten, Sữa, Trứng' },
-      { id: 'DT-04', category: 'DT', name: 'Kugelhopf', price: 75000, size: 'Ø 14cm', stockStatus: 'Đặt trước 24h', description: 'Bánh nướng bơ hình vương miện Alsace. Kết cấu xốp dồi dào hương bơ.', ingredients: 'Bột mì, bơ, nho khô, hạnh nhân.', allergy: 'Gluten, Sữa, Trứng, Hạt' },
-      { id: 'DT-05', category: 'DT', name: 'Pain de Campagne', price: 80000, size: 'Ổ 450g', stockStatus: 'Đặt trước 24h', description: 'Bánh mì đồng quê Pháp từ bột lúa mạch đen mix bột nguyên cám mộc mạc.', ingredients: 'Bột lúa mạch đen, bột nguyên cám, men.', allergy: 'Gluten' },
-      { id: 'DT-06', category: 'DT', name: 'Mille-Feuille Whole', price: 350000, size: 'Ø 16cm - 4-6 người', stockStatus: 'Đặt trước 24h', description: 'Ba tầng bánh puff pastry nướng ép mỏng giòn tan, xen kẽ hai tầng kem vanilla.', ingredients: 'Bột puff pastry, kem sữa vanilla nguyên quả.', allergy: 'Gluten, Trứng, Sữa' },
-      { id: 'DT-07', category: 'DT', name: 'Paris-Brest (Size L)', price: 420000, size: 'Ø 18cm - 6-8 người', stockStatus: 'Đặt trước 24h', description: 'Tác phẩm hình vòng bánh xe. Vỏ choux xốp nhẹ kẹp kem praline hạt phỉ.', ingredients: 'Bột choux, kem praline hạt phỉ.', allergy: 'Gluten, Trứng, Sữa, Hạt' },
-      { id: 'DT-08', category: 'DT', name: 'Black Forest Cake', price: 550000, size: 'Ø 16cm - 6-8 người', stockStatus: 'Đặt trước 48h', description: 'Khu rừng đen Đức. Bông lan socola ướp Kirsch, kẹp giữa kem tươi và cherry.', ingredients: 'Bột cacao, cherry, rượu Kirsch.', allergy: 'Gluten, Trứng, Sữa, Cồn' },
-      { id: 'DT-09', category: 'DT', name: 'Opera Cake (20cm)', price: 650000, size: '20cm x 20cm - 6-8 người', stockStatus: 'Đặt trước 24h', description: 'Tuyệt tác 6 lớp bánh mỏng: Bông lan Joconde cà phê, kem bơ cà phê và ganache.', ingredients: 'Bột hạnh nhân, cà phê, socola đen.', allergy: 'Gluten, Trứng, Sữa, Hạt' },
-      { id: 'DT-10', category: 'DT', name: 'Sachertorte Whole', price: 580000, size: 'Ø 18cm - 6-8 người', stockStatus: 'Đặt trước 24h', description: 'Báu vật ẩm thực Áo. Cốt bánh socola đặc, phủ mứt mơ chua ngọt giữa các tầng.', ingredients: 'Socola đen nguyên chất, mứt mơ.', allergy: 'Gluten, Trứng, Sữa' },
-      { id: 'DT-11', category: 'DT', name: 'Mont Blanc Cake', price: 600000, size: 'Ø 16cm - 4-6 người', stockStatus: 'Đặt trước 48h', description: 'Đế meringue giòn rụm, kem tươi bao bọc bởi sợi kem hạt dẻ bùi đặc trưng.', ingredients: 'Kem hạt dẻ, meringue, kem tươi.', allergy: 'Trứng, Sữa, Hạt' },
-      { id: 'DT-12', category: 'DT', name: 'Charlotte aux Fraises', price: 550000, size: 'Ø 16cm - 4-6 người', stockStatus: 'Đặt trước 24h', description: 'Bánh công chúa lộng lẫy viền bánh quy savoiardi, bao bọc lớp mousse dâu tây.', ingredients: 'Bánh quy savoiardi, mousse dâu tây.', allergy: 'Gluten, Trứng, Sữa' },
-      { id: 'DT-13', category: 'DT', name: 'Baba au Rhum (Set 6)', price: 450000, size: 'Set 6 hũ nhỏ', stockStatus: 'Đặt trước 24h', description: 'Cốt bánh men xốp nhẹ, ngâm đẫm syrup rượu Rum ngọt ngào cay nồng.', ingredients: 'Bột mì, rượu Rum, kem tươi.', allergy: 'Gluten, Trứng, Sữa, Cồn' },
-      { id: 'DT-14', category: 'DT', name: 'Apple Strudel Whole', price: 380000, size: 'Cuộn dài 30cm', stockStatus: 'Đặt trước 24h', description: 'Cuộn táo truyền thống Áo. Lớp bột mỏng cuộn nhân táo hạt lựu, nho khô và quế.', ingredients: 'Bột mỏng, táo tươi, nho khô, quế.', allergy: 'Gluten' },
-      { id: 'DT-15', category: 'DT', name: 'Profiterole Tower', price: 750000, size: 'Tháp 25 viên su', stockStatus: 'Đặt trước 48h', description: 'Tháp su kem lộng lẫy. Những viên choux nhồi kem vanilla xếp cao, rưới socola.', ingredients: 'Bột choux, kem vanilla, sốt socola.', allergy: 'Gluten, Trứng, Sữa' },
+      // DT - BÁNH ĐẶT TRƯỚC (15 MÓN)
+      { id: 'DT-01', category: 'DT', name: 'Sourdough Loaf', price: 85000, size: 'Ổ 500g', stockStatus: 'Đặt trước 24h', description: 'Lên men chậm 48 tiếng. Vỏ dày giòn rụm, ruột ẩm dai vị chua nhẹ quyến rũ.', ingredients: 'Bột mì nguyên cám, men chua levain.', allergy: 'Gluten', image: '[suspicious link removed]' },
+      { id: 'DT-02', category: 'DT', name: 'Panettone Mini', price: 90000, size: '1 bánh mini', stockStatus: 'Đặt trước 24h', description: 'Bánh mùa lễ hội Ý, thớ bánh mềm mịn hòa quyện nho khô và mứt vỏ cam ướp rum.', ingredients: 'Bột mì, trứng, mứt trái cây.', allergy: 'Gluten, Trứng, Sữa', image: '[suspicious link removed]' },
+      { id: 'DT-03', category: 'DT', name: 'Chocolate Babka', price: 85000, size: 'Ổ 400g', stockStatus: 'Đặt trước 24h', description: 'Ổ bánh tết bím Đông Âu, cốt bánh mềm béo cuốn dải socola đen đắng đậm đà.', ingredients: 'Bột, bơ, socola đen, trứng.', allergy: 'Gluten, Sữa, Trứng', image: '[suspicious link removed]' },
+      { id: 'DT-04', category: 'DT', name: 'Kugelhopf', price: 75000, size: 'Ø 14cm', stockStatus: 'Đặt trước 24h', description: 'Bánh nướng bơ hình vương miện Alsace. Kết cấu xốp dồi dào hương bơ.', ingredients: 'Bột mì, bơ, nho khô, hạnh nhân.', allergy: 'Gluten, Sữa, Trứng, Hạt', image: '[suspicious link removed]' },
+      { id: 'DT-05', category: 'DT', name: 'Pain de Campagne', price: 80000, size: 'Ổ 450g', stockStatus: 'Đặt trước 24h', description: 'Bánh mì đồng quê Pháp từ bột lúa mạch đen mix bột nguyên cám mộc mạc.', ingredients: 'Bột lúa mạch đen, bột nguyên cám, men.', allergy: 'Gluten', image: '[suspicious link removed]' },
+      { id: 'DT-06', category: 'DT', name: 'Mille-Feuille Whole', price: 350000, size: 'Ø 16cm - 4-6 người', stockStatus: 'Đặt trước 24h', description: 'Ba tầng bánh puff pastry nướng ép mỏng giòn tan, xen kẽ hai tầng kem vanilla.', ingredients: 'Bột puff pastry, kem sữa vanilla nguyên quả.', allergy: 'Gluten, Trứng, Sữa', image: '[suspicious link removed]' },
+      { id: 'DT-07', category: 'DT', name: 'Paris-Brest (Size L)', price: 420000, size: 'Ø 18cm - 6-8 người', stockStatus: 'Đặt trước 24h', description: 'Tác phẩm hình vòng bánh xe. Vỏ choux xốp nhẹ kẹp kem praline hạt phỉ.', ingredients: 'Bột choux, kem praline hạt phỉ.', allergy: 'Gluten, Trứng, Sữa, Hạt', image: '[suspicious link removed]' },
+      { id: 'DT-08', category: 'DT', name: 'Black Forest Cake', price: 550000, size: 'Ø 16cm - 6-8 người', stockStatus: 'Đặt trước 48h', description: 'Khu rừng đen Đức. Bông lan socola ướp Kirsch, kẹp giữa kem tươi và cherry.', ingredients: 'Bột cacao, cherry, rượu Kirsch.', allergy: 'Gluten, Trứng, Sữa, Cồn', image: '[suspicious link removed]' },
+      { id: 'DT-09', category: 'DT', name: 'Opera Cake (20cm)', price: 650000, size: '20cm x 20cm - 6-8 người', stockStatus: 'Đặt trước 24h', description: 'Tuyệt tác 6 lớp bánh mỏng: Bông lan Joconde cà phê, kem bơ cà phê và ganache.', ingredients: 'Bột hạnh nhân, cà phê, socola đen.', allergy: 'Gluten, Trứng, Sữa, Hạt', image: '[suspicious link removed]' },
+      { id: 'DT-10', category: 'DT', name: 'Sachertorte Whole', price: 580000, size: 'Ø 18cm - 6-8 người', stockStatus: 'Đặt trước 24h', description: 'Báu vật ẩm thực Áo. Cốt bánh socola đặc, phủ mứt mơ chua ngọt giữa các tầng.', ingredients: 'Socola đen nguyên chất, mứt mơ.', allergy: 'Gluten, Trứng, Sữa', image: '[suspicious link removed]' },
+      { id: 'DT-11', category: 'DT', name: 'Mont Blanc Cake', price: 600000, size: 'Ø 16cm - 4-6 người', stockStatus: 'Đặt trước 48h', description: 'Đế meringue giòn rụm, kem tươi bao bọc bởi sợi kem hạt dẻ bùi đặc trưng.', ingredients: 'Kem hạt dẻ, meringue, kem tươi.', allergy: 'Trứng, Sữa, Hạt', image: '[suspicious link removed]' },
+      { id: 'DT-12', category: 'DT', name: 'Charlotte aux Fraises', price: 550000, size: 'Ø 16cm - 4-6 người', stockStatus: 'Đặt trước 24h', description: 'Bánh công chúa lộng lẫy viền bánh quy savoiardi, bao bọc lớp mousse dâu tây.', ingredients: 'Bánh quy savoiardi, mousse dâu tây.', allergy: 'Gluten, Trứng, Sữa', image: '[suspicious link removed]' },
+      { id: 'DT-13', category: 'DT', name: 'Baba au Rhum (Set 6)', price: 450000, size: 'Set 6 hũ nhỏ', stockStatus: 'Đặt trước 24h', description: 'Cốt bánh men xốp nhẹ, ngâm đẫm syrup rượu Rum ngọt ngào cay nồng.', ingredients: 'Bột mì, rượu Rum, kem tươi.', allergy: 'Gluten, Trứng, Sữa, Cồn', image: '[suspicious link removed]' },
+      { id: 'DT-14', category: 'DT', name: 'Apple Strudel Whole', price: 380000, size: 'Cuộn dài 30cm', stockStatus: 'Đặt trước 24h', description: 'Cuộn táo truyền thống Áo. Lớp bột mỏng cuộn nhân táo hạt lựu, nho khô và quế.', ingredients: 'Bột mỏng, táo tươi, nho khô, quế.', allergy: 'Gluten', image: '[suspicious link removed]' },
+      { id: 'DT-15', category: 'DT', name: 'Profiterole Tower', price: 750000, size: 'Tháp 25 viên su', stockStatus: 'Đặt trước 48h', description: 'Tháp su kem lộng lẫy. Những viên choux nhồi kem vanilla xếp cao, rưới socola.', ingredients: 'Bột choux, kem vanilla, sốt socola.', allergy: 'Gluten, Trứng, Sữa', image: '[suspicious link removed]' },
 
-      // SL
-      { id: 'SL-01', category: 'SL', name: 'Chausson aux Pommes', price: 35000, originalPrice: 50000, size: '1 cái', stockStatus: 'Flash sale', description: 'Bánh xếp ngàn lớp hình bán nguyệt ôm trọn phần mứt táo ninh chậm với quế.', ingredients: 'Bột mì, bơ, táo tươi.', allergy: 'Gluten, Sữa' },
-      { id: 'SL-02', category: 'SL', name: 'Pain aux Raisins', price: 30000, originalPrice: 48000, size: '1 cái', stockStatus: 'Flash sale', description: 'Bánh cuộn ốc sên vỏ ngàn lớp giòn rụm, xen kem trứng custard và nho khô.', ingredients: 'Bột mì, nho khô, kem trứng.', allergy: 'Gluten, Trứng, Sữa' },
-      { id: 'SL-03', category: 'SL', name: 'Berry Danish', price: 40000, originalPrice: 55000, size: '1 cái', stockStatus: 'Flash sale', description: 'Đóa hoa Đan Mạch khoe sắc với kem phô mai chua dịu và dâu tây tươi.', ingredients: 'Bột mì, bơ, dâu tây, cream cheese.', allergy: 'Gluten, Sữa' },
-      { id: 'SL-04', category: 'SL', name: 'Pumpernickel', price: 50000, originalPrice: 75000, size: 'Ổ 350g', stockStatus: 'Giảm giá trong ngày', description: 'Dòng bánh đen nguyên cám đặc ruột nước Đức, vị ngọt nhẹ mật đường molasses.', ingredients: 'Lúa mạch đen, mật đường.', allergy: 'Gluten' },
-      { id: 'SL-05', category: 'SL', name: 'English Muffin', price: 20000, originalPrice: 35000, size: '1 cái', stockStatus: 'Happy hour', description: 'Bánh mì ăn sáng chuẩn kiểu Anh. Hình tròn dẹt xốp nhẹ, ngon khi nướng giòn.', ingredients: 'Bột mì, bơ, sữa.', allergy: 'Gluten, Sữa' },
-      { id: 'SL-06', category: 'SL', name: 'Challah Bread', price: 55000, originalPrice: 70000, size: 'Ổ 300g', stockStatus: 'Khuyến mãi', description: 'Bánh mì Do Thái rực rỡ sắc vàng từ trứng & mật ong, thớ bánh dệt lại xốp mềm.', ingredients: 'Bột mì, trứng, mật ong.', allergy: 'Gluten, Trứng' },
-      { id: 'SL-07', category: 'SL', name: 'Bostock', price: 35000, originalPrice: 50000, size: '1 lát lớn', stockStatus: 'Giảm giá', description: 'Lát bánh Brioche tẩm syrup hoa cam, phết kem hạnh nhân dày và nướng xém.', ingredients: 'Brioche, kem hạnh nhân, syrup hoa cam.', allergy: 'Gluten, Trứng, Sữa, Hạt' },
-      { id: 'SL-08', category: 'SL', name: 'Fougasse', price: 45000, originalPrice: 60000, size: 'Ổ chiếc lá', stockStatus: 'Sale cuối ngày', description: 'Bánh mì chiếc lá Provence mằn mặn hương vị thảo mộc và ô liu.', ingredients: 'Bột mì, ô liu đen, thảo mộc.', allergy: 'Gluten' },
-      { id: 'SL-09', category: 'SL', name: 'Kaiser Roll', price: 15000, originalPrice: 25000, size: '1 cái', stockStatus: 'Mua 2 tặng 1', description: 'Ổ bánh mì tròn nhỏ của hoàng đế Áo, vỏ ngoài giòn lấm tấm hạt anh túc.', ingredients: 'Bột mì, hạt anh túc.', allergy: 'Gluten' },
-      { id: 'SL-10', category: 'SL', name: 'Ficelle', price: 15000, originalPrice: 25000, size: '1 ổ dài', stockStatus: 'Sale cuối ngày', description: 'Phiên bản gầy và dài hơn của Baguette dành cho tín đồ mê vỏ giòn.', ingredients: 'Bột mì, men tự nhiên.', allergy: 'Gluten' },
+      // SL - BÁNH SALE (10 MÓN)
+      { id: 'SL-01', category: 'SL', name: 'Chausson aux Pommes', price: 35000, originalPrice: 50000, size: '1 cái', stockStatus: 'Flash sale', description: 'Bánh xếp ngàn lớp hình bán nguyệt ôm trọn phần mứt táo ninh chậm với quế.', ingredients: 'Bột mì, bơ, táo tươi.', allergy: 'Gluten, Sữa', image: '[suspicious link removed]' },
+      { id: 'SL-02', category: 'SL', name: 'Pain aux Raisins', price: 30000, originalPrice: 48000, size: '1 cái', stockStatus: 'Flash sale', description: 'Bánh cuộn ốc sên vỏ ngàn lớp giòn rụm, xen kem trứng custard và nho khô.', ingredients: 'Bột mì, nho khô, kem trứng.', allergy: 'Gluten, Trứng, Sữa', image: '[suspicious link removed]' },
+      { id: 'SL-03', category: 'SL', name: 'Berry Danish', price: 40000, originalPrice: 55000, size: '1 cái', stockStatus: 'Flash sale', description: 'Đóa hoa Đan Mạch khoe sắc với kem phô mai chua dịu và dâu tây tươi.', ingredients: 'Bột mì, bơ, dâu tây, cream cheese.', allergy: 'Gluten, Sữa', image: '[suspicious link removed]' },
+      { id: 'SL-04', category: 'SL', name: 'Pumpernickel', price: 50000, originalPrice: 75000, size: 'Ổ 350g', stockStatus: 'Giảm giá trong ngày', description: 'Dòng bánh đen nguyên cám đặc ruột nước Đức, vị ngọt nhẹ mật đường molasses.', ingredients: 'Lúa mạch đen, mật đường.', allergy: 'Gluten', image: '[suspicious link removed]' },
+      { id: 'SL-05', category: 'SL', name: 'English Muffin', price: 20000, originalPrice: 35000, size: '1 cái', stockStatus: 'Happy hour', description: 'Bánh mì ăn sáng chuẩn kiểu Anh. Hình tròn dẹt xốp nhẹ, ngon khi nướng giòn.', ingredients: 'Bột mì, bơ, sữa.', allergy: 'Gluten, Sữa', image: '[suspicious link removed]' },
+      { id: 'SL-06', category: 'SL', name: 'Challah Bread', price: 55000, originalPrice: 70000, size: 'Ổ 300g', stockStatus: 'Khuyến mãi', description: 'Bánh mì Do Thái rực rỡ sắc vàng từ trứng & mật ong, thớ bánh dệt lại xốp mềm.', ingredients: 'Bột mì, trứng, mật ong.', allergy: 'Gluten, Trứng', image: '[suspicious link removed]' },
+      { id: 'SL-07', category: 'SL', name: 'Bostock', price: 35000, originalPrice: 50000, size: '1 lát lớn', stockStatus: 'Giảm giá', description: 'Lát bánh Brioche tẩm syrup hoa cam, phết kem hạnh nhân dày và nướng xém.', ingredients: 'Brioche, kem hạnh nhân, syrup hoa cam.', allergy: 'Gluten, Trứng, Sữa, Hạt', image: '[suspicious link removed]' },
+      { id: 'SL-08', category: 'SL', name: 'Fougasse', price: 45000, originalPrice: 60000, size: 'Ổ chiếc lá', stockStatus: 'Sale cuối ngày', description: 'Bánh mì chiếc lá Provence mằn mặn hương vị thảo mộc và ô liu.', ingredients: 'Bột mì, ô liu đen, thảo mộc.', allergy: 'Gluten', image: '[suspicious link removed]' },
+      { id: 'SL-09', category: 'SL', name: 'Kaiser Roll', price: 15000, originalPrice: 25000, size: '1 cái', stockStatus: 'Mua 2 tặng 1', description: 'Ổ bánh mì tròn nhỏ của hoàng đế Áo, vỏ ngoài giòn lấm tấm hạt anh túc.', ingredients: 'Bột mì, hạt anh túc.', allergy: 'Gluten', image: '[suspicious link removed]' },
+      { id: 'SL-10', category: 'SL', name: 'Ficelle', price: 15000, originalPrice: 25000, size: '1 ổ dài', stockStatus: 'Sale cuối ngày', description: 'Phiên bản gầy và dài hơn của Baguette dành cho tín đồ mê vỏ giòn.', ingredients: 'Bột mì, men tự nhiên.', allergy: 'Gluten', image: '[suspicious link removed]' },
 
-      // UD
-      { id: 'UD-01', category: 'UD', name: 'Combo Morning Paris', price: 85000, size: 'Combo 1 người', stockStatus: 'Có sẵn', description: '1 Croissant mặn kẹp jambon phô mai nướng chảy + 1 ly nước ép cam tươi.', ingredients: 'Croissant jambon phô mai, nước cam.', allergy: 'Gluten, Sữa, Thịt' },
-      { id: 'UD-02', category: 'UD', name: 'Set Stromboli Chill', price: 120000, size: 'Set 1 người', stockStatus: 'Có sẵn', description: '1 bánh mì Ý Stromboli cuộn thịt nguội nướng nóng + 1 ly bia thủ công IPA.', ingredients: 'Bánh mì cuộn thịt nguội, phô mai, Bia IPA.', allergy: 'Gluten, Sữa, Cồn, Thịt' },
-      { id: 'UD-03', category: 'UD', name: 'Cruffin Vanilla Box', price: 110000, size: 'Hộp 3 chiếc', stockStatus: 'Mua 2 Tặng 1', description: 'Hộp quà tặng 3 Cruffin ngàn lớp bơm đẫm kem trứng vanilla béo ngậy.', ingredients: 'Bột mì, bơ, kem vanilla nguyên quả.', allergy: 'Gluten, Trứng, Sữa' },
-      { id: 'UD-04', category: 'UD', name: 'French Macaron Trio', price: 76500, size: 'Hộp 3 viên', stockStatus: 'Giảm 10% VIP', description: 'Hộp 3 viên ngọc nước Pháp: Vỏ giòn tan, nhân dẻo (Pistachio, Socola, Mâm xôi).', ingredients: 'Bột hạnh nhân, socola, mâm xôi, pistachio.', allergy: 'Trứng, Sữa, Hạt' },
-      { id: 'UD-05', category: 'UD', name: 'Almond Financier Gift', price: 250000, size: 'Hộp quà 5 thỏi', stockStatus: 'Hộp quà cao cấp', description: '5 thỏi bánh Financier thơm nức bơ đun nâu và bột hạnh nhân cao cấp.', ingredients: 'Bột hạnh nhân, bơ nâu, lòng trắng trứng.', allergy: 'Gluten, Trứng, Sữa, Hạt' }
+      // UD - ƯU ĐÃI (5 MÓN)
+      { id: 'UD-01', category: 'UD', name: 'Combo Morning Paris', price: 85000, size: 'Combo 1 người', stockStatus: 'Có sẵn', description: '1 Croissant mặn kẹp jambon phô mai nướng chảy + 1 ly nước ép cam tươi.', ingredients: 'Croissant jambon phô mai, nước cam.', allergy: 'Gluten, Sữa, Thịt', image: '[suspicious link removed]' },
+      { id: 'UD-02', category: 'UD', name: 'Set Stromboli Chill', price: 120000, size: 'Set 1 người', stockStatus: 'Có sẵn', description: '1 bánh mì Ý Stromboli cuộn thịt nguội nướng nóng + 1 ly bia thủ công IPA.', ingredients: 'Bánh mì cuộn thịt nguội, phô mai, Bia IPA.', allergy: 'Gluten, Sữa, Cồn, Thịt', image: '[suspicious link removed]' },
+      { id: 'UD-03', category: 'UD', name: 'Cruffin Vanilla Box', price: 110000, size: 'Hộp 3 chiếc', stockStatus: 'Mua 2 Tặng 1', description: 'Hộp quà tặng 3 Cruffin ngàn lớp bơm đẫm kem trứng vanilla béo ngậy.', ingredients: 'Bột mì, bơ, kem vanilla nguyên quả.', allergy: 'Gluten, Trứng, Sữa', image: '[suspicious link removed]' },
+      { id: 'UD-04', category: 'UD', name: 'French Macaron Trio', price: 76500, size: 'Hộp 3 viên', stockStatus: 'Giảm 10% VIP', description: 'Hộp 3 viên ngọc nước Pháp: Vỏ giòn tan, nhân dẻo (Pistachio, Socola, Mâm xôi).', ingredients: 'Bột hạnh nhân, socola, mâm xôi, pistachio.', allergy: 'Trứng, Sữa, Hạt', image: '[suspicious link removed]' },
+      { id: 'UD-05', category: 'UD', name: 'Almond Financier Gift', price: 250000, size: 'Hộp quà 5 thỏi', stockStatus: 'Hộp quà cao cấp', description: '5 thỏi bánh Financier thơm nức bơ đun nâu và bột hạnh nhân cao cấp.', ingredients: 'Bột hạnh nhân, bơ nâu, lòng trắng trứng.', allergy: 'Gluten, Trứng, Sữa, Hạt', image: '[suspicious link removed]' }
     ];
 
     const FAQS = [
@@ -253,7 +257,6 @@
       { q: 'Có thể gửi kèm lời chúc riêng không?', a: 'Tiệm hỗ trợ in lời chúc lên biển tên chocolate cắm trực tiếp trên bánh (tối đa 60 ký tự) hoặc tặng kèm thiệp cao cấp.' }
     ];
 
-    // RENDER FUNCTIONS
     function formatVND(num) {
       return num.toLocaleString('vi-VN') + ' VNĐ';
     }
@@ -274,20 +277,18 @@
       const grid = document.getElementById('products-grid');
       const filtered = PRODUCTS.filter(p => p.category === currentTab);
       grid.innerHTML = filtered.map(p => `
-        <div class="bg-[#1A1614] border border-[#2A221E] hover:border-[#D4AF37]/50 rounded-xl overflow-hidden shadow-xl transition group flex flex-col justify-between">
+        <div class="bg-[#1A1614] border border-[#2A221E] hover:border-[#D4AF37]/50 rounded-xl overflow-hidden shadow-xl transition duration-300 group flex flex-col justify-between">
           <div>
-            <div class="relative h-44 overflow-hidden bg-[#241E1A] flex items-center justify-center text-[#D4AF37] font-serif text-lg font-bold">
-              <span class="absolute top-2.5 left-2.5 bg-[#12100E]/90 text-[#D4AF37] text-[10px] font-bold tracking-widest px-2 py-0.5 rounded border border-[#D4AF37]/30">${p.id}</span>
-              <div class="text-center p-4">
-                <div class="w-12 h-12 mx-auto mb-2 rounded-full bg-[#6B4226]/30 flex items-center justify-center border border-[#D4AF37]/40 text-xl">🥐</div>
-                <span class="text-xs text-[#A69385] font-sans font-normal">${p.stockStatus}</span>
-              </div>
+            <div class="relative h-48 overflow-hidden bg-[#241E1A]">
+              <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-90" />
+              <span class="absolute top-2.5 left-2.5 bg-[#12100E]/90 text-[#D4AF37] text-[10px] font-bold tracking-widest px-2.5 py-1 rounded border border-[#D4AF37]/40 shadow-md">${p.id}</span>
+              <span class="absolute bottom-2.5 right-2.5 bg-[#12100E]/80 text-[#E5DCD3] text-[10px] px-2 py-0.5 rounded backdrop-blur-sm border border-[#3A2E28]">${p.stockStatus}</span>
             </div>
             <div class="p-4">
               <h3 class="font-serif text-base text-[#E5DCD3] mb-1 group-hover:text-[#D4AF37] transition font-semibold">${p.name}</h3>
-              <p class="text-xs text-[#A69385] line-clamp-2 mb-3">${p.description}</p>
+              <p class="text-xs text-[#A69385] line-clamp-2 mb-3 leading-relaxed">${p.description}</p>
               <div class="flex items-baseline space-x-2">
-                <span class="text-[#D4AF37] font-bold text-sm">${formatVND(p.price)}</span>
+                <span class="text-[#D4AF37] font-bold text-sm tracking-wide">${formatVND(p.price)}</span>
                 ${p.originalPrice ? `<span class="text-xs text-[#A69385] line-through">${formatVND(p.originalPrice)}</span>` : ''}
               </div>
             </div>
@@ -306,22 +307,21 @@
       const modal = document.getElementById('product-modal');
       const container = document.getElementById('modal-content');
       container.innerHTML = `
-        <div class="h-44 bg-[#241E1A] rounded-xl mb-4 border border-[#2A221E] flex flex-col items-center justify-center text-[#D4AF37]">
-          <div class="text-4xl mb-1">🥖</div>
-          <span class="text-xs text-[#A69385]">${modalProduct.stockStatus}</span>
+        <div class="h-56 bg-[#241E1A] rounded-xl mb-4 overflow-hidden border border-[#2A221E] relative">
+          <img src="${modalProduct.image}" alt="${modalProduct.name}" class="w-full h-full object-cover" />
+          <span class="absolute top-3 left-3 bg-[#12100E]/90 text-[#D4AF37] text-xs font-bold px-2.5 py-1 rounded border border-[#D4AF37]/40">${modalProduct.id}</span>
         </div>
         <div class="flex justify-between items-start mb-2">
           <div>
-            <span class="text-xs text-[#D4AF37] font-bold tracking-widest">${modalProduct.id}</span>
             <h3 class="text-xl font-serif font-bold text-[#E5DCD3]">${modalProduct.name}</h3>
+            <span class="text-xs text-[#A69385]">${modalProduct.stockStatus}</span>
           </div>
           <span class="text-lg font-bold text-[#D4AF37]">${formatVND(modalProduct.price)}</span>
         </div>
         <p class="text-xs text-[#A69385] mb-4 bg-[#241E1A] p-2.5 rounded-lg border border-[#3A2E28]">
-          <strong>Kích thước chuẩn:</strong> ${modalProduct.size} <br/>
-          <strong>Tình trạng:</strong> ${modalProduct.stockStatus}
+          <strong>Kích thước chuẩn:</strong> ${modalProduct.size}
         </p>
-        <div class="space-y-2 text-xs mb-5 text-[#A69385]">
+        <div class="space-y-2 text-xs mb-5 text-[#A69385] leading-relaxed">
           <p><strong>Mô tả hương vị:</strong> ${modalProduct.description}</p>
           <p><strong>Thành phần:</strong> ${modalProduct.ingredients}</p>
           <p class="text-amber-500/90"><strong>Cảnh báo dị ứng:</strong> ${modalProduct.allergy}</p>
@@ -341,9 +341,9 @@
         </div>
         <div class="flex items-center space-x-3">
           <div class="flex items-center border border-[#3A2E28] rounded-lg bg-[#12100E]">
-            <button onclick="changeModalQty(-1)" class="p-2 text-[#A69385]">-</button>
-            <span id="modal-qty-val" class="px-2.5 text-xs font-semibold">${modalQty}</span>
-            <button onclick="changeModalQty(1)" class="p-2 text-[#A69385]">+</button>
+            <button onclick="changeModalQty(-1)" class="p-2.5 text-[#A69385] hover:text-white">-</button>
+            <span id="modal-qty-val" class="px-3 text-xs font-semibold">${modalQty}</span>
+            <button onclick="changeModalQty(1)" class="p-2.5 text-[#A69385] hover:text-white">+</button>
           </div>
           <button onclick="confirmAddToCart()" id="modal-submit-btn" class="flex-1 bg-[#6B4226] hover:bg-[#825230] text-[#D4AF37] font-bold py-3 rounded-lg text-xs tracking-wider uppercase border border-[#D4AF37]/50 transition">
             THÊM VÀO GIỎ - ${formatVND(modalProduct.price * modalQty)}
@@ -491,7 +491,7 @@
         alert('Vui lòng nhập Họ tên và Số điện thoại!');
         return;
       }
-      alert('Yêu cầu đặt bánh đã được gửi thành công! Mã đơn của bạn đang được xử lý.');
+      alert('Yêu cầu đặt bánh đã được gửi thành công! Tiệm sẽ liên hệ xác nhận đơn hàng qua số điện thoại.');
       cart = [];
       toggleCart(false);
       renderCart();
@@ -515,7 +515,6 @@
       renderFaq();
     }
 
-    // INIT
     renderProducts();
     renderFaq();
   </script>
